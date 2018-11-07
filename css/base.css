@@ -1,0 +1,15 @@
+:root {
+    --dark: #404144;
+    --darkD: #323335;
+    --darkL: #55565a;
+    --mid: #6c818b;
+    --midD: #5d6f77;
+    --midL: #859da8;
+    --light: #9bacb4;
+    --lightD:#94a2a8;
+    --lightL:#b1c2ca;
+    --boom: #e93a23;
+    --boomD: #d1301b;
+    --boomL: #f34b35;
+    --superLight: lightgray;
+}
