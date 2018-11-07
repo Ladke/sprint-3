@@ -1,7 +1,16 @@
-
+'use strict'
 import iconsD from '../misterkeep-services/icons.js';
 
+import searchNotes from './searchbar.cmp.js';
+import sideBar from './sidebar.cmp.js';
+
 export default {
+    props: ['labels'],
+
+    components: {
+        searchNotes,
+        sideBar
+    },
 
     template: `
     <section class="misterkeep_menu">
@@ -9,17 +18,12 @@ export default {
             <div class="menu_burger">
                 <svg class="icon icon_burger" viewBox="0 0 24 24"><path :d="icons.burgerBar"></path></svg>
             </div>
+            <div class="icon-box">
+                <svg class="icon icon_lamp" viewBox="0 0 24 24"><path :d="icons.lamp"></path></svg>
+                <slot></slot> 
+            </div> 
 
-            <div class="curr-place">
-                <span class="curr-place__span">{{currPlace}}</span>
-            </div>
-
-            <div class="side__nav">
-                <ul class="top">
-                    <li class="nav_item" @click="setPage">notes</li>
-                    <li class="nav_item" @click="setPage">reminders</li>
-                </ul>
-            </div>
+            <search-notes></search-notes>
         </nav>
     </section> 
     `,
@@ -32,9 +36,7 @@ export default {
     },
 
     methods: {
-        setPage(ev) {
-            console.log(ev.target.innerText);
-        }
+
     },
 
     computed: {
@@ -42,6 +44,6 @@ export default {
     },
 
     created() {
-        console.log(this.icons)
+        // console.log(this.icons)
     }
 }

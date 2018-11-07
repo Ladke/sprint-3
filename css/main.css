@@ -1,2 +1,6 @@
 @import url('./base.css');
 @import url('./misterkeep/base.css');
+@import url('./misterkeep/nav.css');
+@import url('./misterkeep/searchbar.css');
+@import url('./misterkeep/sidebar.css');
+@import url('./misterkeep/newNote.css');
