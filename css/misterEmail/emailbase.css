@@ -1,0 +1,22 @@
+.flex{
+    display: flex;
+}
+
+.between{
+    justify-content: space-between;
+}
+
+.column{
+    flex-direction: column;
+}
+
+.row{
+    flex-direction: row;
+}
+.around{
+    justify-content: space-around;
+}
+
+i:hover{
+    cursor: pointer;
+}

@@ -4,8 +4,29 @@ import {emailService} from '../services/email.service.js'
 export default {
 
     template: `
-        <section class="email-details">
-            <!-- <button @click="deleteEmail">Delete</button> -->
+        <section class="email-details" v-if="email">
+          <div class="email-head flex between">
+            <i class="fas fa-arrow-left email-back" @click="goBack"></i>
+            <i class="fas fa-trash-alt email-delete"></i>
+            <i class="fas fa-envelope email-read"></i>
+          </div>
+          <section class="email-main">
+            <h4>From: {{email.name}}</h4>
+            <h4>Subject: {{email.subject}}</h4>
+            <hr>
+            <p>{{email.body}}</p>
+            <hr>
+          </section>
+
+          <section class='emails-nav flex between'>
+            <div><i class="fas fa-arrow-left " title="Previous Email"></i>Previous</div>
+            <div>Next<i class="fas fa-arrow-right" title="Next Email"></i></div>
+          </section>
+
+          <section class="email-bottom-ctrl flex around">
+          <i class="fas fa-reply"></i>
+          <i class="fas fa-reply-all"></i>
+          </section>
         </section>
     `,
    data() {
@@ -22,13 +43,16 @@ export default {
         this.loadEmailData();
     },
     methods: {
-        // deleteCar() {
-        //     carService.deleteCar(this.car.id)
-        //     .then(res => {
-        //         busService.$emit(USR_MSG_DISPLAY, {txt: `Car ${this.car.vendor} Deleted`, type:'success' })
-        //         this.$router.push('/car');
-        //     })
-
+        deleteCEmail() {
+            EmailService.deleteEmailr(this.email.id)
+            .then(res => {
+                busService.$emit(USR_MSG_DISPLAY, {txt: `Car ${this.car.vendor} Deleted`, type:'success' })
+                this.$router.push('/misteremail');
+            })
+          },
+        goBack(){
+          this.$router.push('/misteremail');
+        },
         loadEmailData() {
             const emailId = this.$route.params.emailId;
             console.log(emailId);

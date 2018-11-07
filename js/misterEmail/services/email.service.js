@@ -4,11 +4,7 @@ import storageService from "./storage.service.js";
 import utilService from "./util.service.js";
 import eventBus, { USR_MSG_DISPLAY } from "./event-bus.service.js";
 
-// export default {
-//     query,
-//     getById,
-//     deleteCar,
-// }
+
 export const emailService = {
   query,
   getEmailById,
@@ -40,10 +36,6 @@ function getEmailById(emailId) {
   });
 }
 
-// function getBookById(bookId) {
-//     const book = booksDB.find(book => book.id === bookId);
-//     return Promise.resolve(book)
-//   }
 
 function nextEmail(emailId) {
   return storageService.load(KEY).then(emails => {
@@ -96,7 +88,7 @@ function createEmail() {
     name: faker.name.findName(),
     emailAdrs: faker.internet.email(),
     subject: faker.lorem.sentence(),
-    body: faker.lorem.paragraph(),
+    body: faker.lorem.paragraphs(3),
     isRead: false,
     sentAt: faker.date.past()
   };

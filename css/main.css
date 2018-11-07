@@ -1,4 +1,8 @@
 
-@import url('./email-list.css');
 @import url('./base.css');
 @import url('./misterkeep/base.css');
+@import url('./misterEmail/email-list.css');
+@import url('./misterEmail/emailDetails.css');
+@import url('./misterEmail/emailbase.css');  
+@import url('./misterEmail/emailPreview.css');  
+ 

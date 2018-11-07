@@ -1,0 +1,30 @@
+.email-head{
+    background-color: var(--mid);
+    height: 60px;
+    font-size: 3rem;
+    align-items: center;
+    padding: 0 15px;
+    color: var(--superLight);
+    margin-bottom: 15px;
+}
+
+.email-main{
+    padding: 0 15px;
+}
+
+.emails-nav{
+    font-size: 3rem;
+    padding: 0 15px;
+    color: var(--dark);
+    margin-bottom: 15px;
+
+}
+
+.email-bottom-ctrl{
+    padding: 0 15px;
+
+    font-size: 3rem;   
+    color: var(--dark);
+}
+
+
