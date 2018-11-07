@@ -1,19 +1,14 @@
 import homePage from '../pages/home-page.js';
+import misterKeep from '../pages/misterkeep-pages/misterkeep-main.js';
 
 var routes = [{
         path: '/',
         component: homePage
     },
-    // {
-    //     path: '/books',
-    //     component: bookApp
-    // },
-    // {
-    //     path: '/books/:bookID',
-    //     component: bookDetails
-    // }
-
-    // {path: '/book-edit', component: bookEdit }
+    {
+        path: '/misterkeep',
+        component: misterKeep
+    }
 ]
 
 Vue.use(VueRouter);
