@@ -1,35 +1,32 @@
-import carService from '../../services/car.service.js'
+import {emailService} from '../services/email.service.js'
 
-import carList from '../../cmps/car/car-list.js'
-import carFilter from '../../cmps/car/car-filter.js'
+import emailList from '../cmps/email-list.cmp.js'
+// import carFilter from '../../cmps/car/car-filter.js'
 
 export default {
     template: `
-        <section class="car">
-            <h1>Cars App</h1>
-            <router-link to="/car/edit">New Car</router-link> 
-            <car-filter @filtered="setFilter"></car-filter>
-            <car-list :cars="cars"></car-list>
+        <section class="email">
+            <email-list :emails="emails"></email-list>
         </section>
     `,
     data() {
         return {
-            cars: []
+            emails:[],
         }
     },
     created() {
-        carService.query()
-            .then(cars => this.cars = cars)
+        emailService.query()
+            .then(emails => this.emails = emails)
     },
     methods: {
         setFilter(filter) {
-            carService.query(filter)
-            .then(cars => this.cars = cars)
+            emailService.query(filter)
+            .then(emails => this.emails = emails)
         }
     },
     
     components: {
-        carList,
-        carFilter
+        emailList,
+        // emailFilter
     }
 }
