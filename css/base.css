@@ -13,3 +13,23 @@
     --boomL: #f34b35;
     --superLight: lightgray;
 }
+
+html {
+    font-size: 52.5%;
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-size: 1.6rem;
+    color: #323335;
+}
+
+body > *, 
+body > *::after, 
+body > *::before {
+    box-sizing: border-box;
+}

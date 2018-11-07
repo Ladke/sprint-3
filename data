@@ -1,0 +1,12 @@
+note = {
+    text: '',
+    id: utils.makeID(),
+    date: undefined,
+    isReminder: false,
+    isPinned: false,
+    isComplited: false,
+    label: '',
+    img: '',
+    backgroundColor: white,
+}
+
