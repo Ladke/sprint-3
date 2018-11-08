@@ -1,18 +1,44 @@
 .notes-main {
     padding: 2rem;
+    font-size: 2.2rem;
+    padding-left: 3rem;
     background-color: #eee;
     width: 100%;
+    height: 100%;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
 }
-
+textarea {
+    resize: vertical;
+  }
 .new-note {
     width: 60rem;
-    box-shadow: 4px 4px 8px rgba(82, 79, 79, 0.753);
+    padding: 2rem;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    box-shadow: 0 3px 3px 3px rgba(0, 0, 0, 0.267);
 }
 .new-note-text{
     width: 100%;
     margin: 0;
     height: 6rem;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font: inherit;
+    font-size: 2.2rem;
+}
+.icon_small {
+    width: 2rem;
+    height: 2rem;
+    transition: all .2s;
+    margin-right: 2.2rem;
+    fill: rgba(0, 0, 0, 0.568);
+    cursor: pointer;
+}
+
+.icon_small {
+    fill: #000;
 }

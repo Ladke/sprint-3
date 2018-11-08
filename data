@@ -7,6 +7,6 @@ note = {
     isComplited: false,
     label: '',
     img: '',
-    backgroundColor: white,
+    backgroundColor: 'rgb(255, 255, 255)';
 }
 

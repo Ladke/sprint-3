@@ -3,13 +3,15 @@ import iconsD from '../misterkeep-services/icons.js';
 
 import searchNotes from './searchbar.cmp.js';
 import sideBar from './sidebar.cmp.js';
+import navApp from './nav-app.cmp.js';
 
 export default {
     props: ['labels'],
 
     components: {
         searchNotes,
-        sideBar
+        sideBar,
+        navApp
     },
 
     template: `
@@ -24,19 +26,29 @@ export default {
             </div> 
 
             <search-notes></search-notes>
+
+            <div class="nav-btn" @click="toggleNav">
+                <svg class="icon nav-icon" viewBox="0 0 24 24"><path :d="icons.nav"></path></svg>
+            </div>
         </nav>
+            <transition name="slide-down">
+                <nav-app v-if="isShow"></nav-app>
+            </transition>
     </section> 
     `,
 
     data() {
         return {
             icons: iconsD,
+            isShow: false,
             currPlace: 'notes'
         }
     },
 
     methods: {
-
+        toggleNav() {
+            this.isShow = !this.isShow;
+        }
     },
 
     computed: {
