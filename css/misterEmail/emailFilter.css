@@ -1,0 +1,35 @@
+.email-filter{
+    box-sizing: border-box;
+    position: fixed;
+    font-weight: 600;
+    z-index: 2;
+    top:60px;
+    right: -250px;
+    padding: 20px;
+    font-size: 2rem;
+    height: 60px;
+    width:250px;
+    color: var(--dark);
+    background-color: var(--light);
+    transition: 0.3s;
+    
+
+
+}
+
+.email-filter.open{
+    transform: translate(-250px);
+}
+
+.email-filter button{
+    height: 22px;
+    background: none;
+    border: none;
+    font-size: 2.8rem;
+    color: var(--dark);
+    font-weight: 700;
+}
+
+.search-input{
+    height: 22px;
+}

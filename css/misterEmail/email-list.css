@@ -29,8 +29,6 @@ ul{
 }
 
 .nav-items{
-    
-   
     margin-bottom: 8px;
 
 }
@@ -64,14 +62,16 @@ ul{
 }
 .main-nav.open{
     transform: translate(198px);
-
-
 }
 
 .close-nav{
     text-align: right;
     margin-bottom: 15px;
     font-size: 2rem;
+}
+
+.goHome{
+    color: var(--superLight)
 }
 
 @media (min-width: 680px){

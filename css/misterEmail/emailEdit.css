@@ -28,6 +28,10 @@ div.contact{
     font-size: 2rem;
 }
 
+.submit-btn:hover{
+cursor: pointer;
+}
+
 .back-arrow{
     color: var(--superLight)
 }

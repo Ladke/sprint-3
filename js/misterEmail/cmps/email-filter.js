@@ -1,7 +1,8 @@
 export default {
     template:`
-    <section class="email-filter">
-        <input type="text" v-model="searchWord" @input="emitFilter" placeholder="Search Emails" /><span>Go</span>
+    <section class="email-filter flex ">
+    <button>Go</button><input type="text" v-model="searchWord" @input="emitFilter" 
+        class="search-input" placeholder=" Search Emails" />
     </section>
     `,
     data() {

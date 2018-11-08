@@ -58,10 +58,10 @@ export default {
     },
 
     onReply() {
-      console.log(this.email.emailAdrs);
-
-      eventBus.$emit("reply-email", this.email.subject, this.email.emailAdrs);
-      this.$router.push("/misteremail/edit");
+  
+      this.$router.push(`/misteremail/edit/${this.email.id}`);
+      // eventBus.$emit("reply-email", this.email.subject, this.email.emailAdrs);
+     
     },
 
     loadEmailData() {
@@ -82,8 +82,6 @@ export default {
 
   watch: {
     "$route.params.emailId": function(id, prevValue) {
-      console.log(id);
-
       this.loadEmailData();
     }
   },
@@ -91,9 +89,9 @@ export default {
   created() {
     this.loadEmailData().then(() => {
       this.email.isRead = true;
-      console.log(this.email.isRead);
     });
   },
+  
   destroyed() {
     emailService.updateItem(this.email);
   }

@@ -12,6 +12,7 @@ export default {
           <i  v-if="isNav" class="fas fa-times" @click="isNav=!isNav"></i>
           <i class="fas fa-plus" @click="addEmail"></i>
           <i class="fas fa-search"  @click="isFilter=!isFilter"></i>
+          <router-link to="/"><i class=" goHome fas fa-home"></i></router-link>
         </div>
         <ul class="email-list">
           <email-Preview  v-for="email in emails"
