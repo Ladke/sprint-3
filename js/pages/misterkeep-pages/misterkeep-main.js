@@ -7,14 +7,16 @@ import iconsD from '../../misterkeep-services/icons.js';
 import menuTamplate from '../../misterkeep-cmps/menu-tamplate.cmp.js';
 import sideBar from '../../misterkeep-cmps/sidebar.cmp.js';
 import addNote from '../../misterkeep-cmps/add-note.cmp.js';
-import noteCard from '../../misterkeep-cmps/note-card.cmp.js'
+import noteCard from '../../misterkeep-cmps/note-card.cmp.js';
+import msgTxt from '../../misterkeep-cmps/msg-txt.cmp.js'
 
 export default {
     components: {
         menuTamplate,
         sideBar,
         addNote,
-        noteCard
+        noteCard,
+        msgTxt
     },
 
     template: `
@@ -40,6 +42,7 @@ export default {
             </div>
         </section> 
 
+        <msg-txt :type="action" v-show="action" appear @close-msg="() => this.action = undefined"></msg-txt>
             <!-- <template>
                 <component :is="page"></component>
             </template> -->
@@ -53,6 +56,7 @@ export default {
             notes: notesService.query(),
             labels: notesService.getLabels(),
             icons: iconsD.lamp,
+            action: undefined,
             filter: '',
             type: 'notes',
             showNav: false
@@ -61,12 +65,12 @@ export default {
 
     methods: {
         changeType(type) {
-            this.type = type;
-            console.log(type);           
+            this.type = type;      
         },
         removeNote(id) {          
             notesService.removeNote(id)
             this.notes = notesService.query();
+            this.showMsg('remove');
         },
         changeColor(color, currNote) {
             if(currNote) {
@@ -79,6 +83,16 @@ export default {
         },
         setFilter(filter) {
             this.filter = filter;
+        },
+        showMsg(action) {
+            this.action = action;
+
+            eventBus.$emit('add-msg', action);
+            console.log('aaa');
+            
+            setTimeout(() => {
+                this.action = undefined;
+            }, 3000)
         }
     },
 
