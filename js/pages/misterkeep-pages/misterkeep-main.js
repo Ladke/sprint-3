@@ -67,10 +67,11 @@ export default {
         changeType(type) {
             this.type = type;      
         },
-        removeNote(id) {          
+        removeNote(id, isOnedit) {          
             notesService.removeNote(id)
             this.notes = notesService.query();
-            this.showMsg('remove');
+
+            if(!isOnedit)  this.showMsg('remove');
         },
         changeColor(color, currNote) {
             if(currNote) {
@@ -113,7 +114,6 @@ export default {
         eventBus.$on('delete-note', this.removeNote);
         eventBus.$on('change-color', this.changeColor);
         eventBus.$on('set-filter', this.setFilter);
-        console.log(this.notes)
     },
 
 }
