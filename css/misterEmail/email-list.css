@@ -6,6 +6,26 @@ ul{
     margin: 0;
 }
 
+.email-head{
+    position: fixed;
+    top:0;
+    left: 0;
+    background-color: var(--mid);
+    height: 60px;
+    width: 90%;
+    
+    /* z-index: 1; */
+    font-size: 3rem;
+    align-items: center;
+    padding: 0 25px;
+    color: var(--superLight);
+    margin-bottom: 15px;
+}
+
+.email-list{
+    margin-top: 65px;
+}
+
 .email-preview{
 
     border-bottom: 1px solid var(--mid);
@@ -16,7 +36,7 @@ ul{
 .email-preview:hover{
     cursor: pointer;
 }
-.screen {
+/* .screen {
     position: fixed;
     height: 100%;
     width: 100%;
@@ -26,7 +46,7 @@ ul{
     opacity: 0.7;
     transition: opacity .3s;
     cursor: pointer;
-}
+} */
 
 .nav-items{
     margin-bottom: 8px;

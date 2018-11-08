@@ -87,7 +87,7 @@ function updateItem(email) {
 
 function generateEmails() {
   var emails = [];
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 30; i++) {
     emails.push(createEmail());
   }
   emails = emails.sort(dateSort)

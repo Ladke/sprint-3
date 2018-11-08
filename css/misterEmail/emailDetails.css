@@ -1,12 +1,4 @@
-.email-head{
-    background-color: var(--mid);
-    height: 60px;
-    font-size: 3rem;
-    align-items: center;
-    padding: 0 25px;
-    color: var(--superLight);
-    margin-bottom: 15px;
-}
+
 
 .email-main{
     padding: 0 15px;
