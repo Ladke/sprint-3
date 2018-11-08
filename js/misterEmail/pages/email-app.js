@@ -6,12 +6,13 @@ import emailList from '../cmps/email-list.cmp.js'
 export default {
     template: `
         <section class="email">
-            <email-list :emails="emails"></email-list>
+            <email-list :emails="emails"  @selected-item ="itemSelected"></email-list>
         </section>
     `,
     data() {
         return {
             emails:[],
+            selectedItems:[],
         }
     },
     created() {
@@ -19,6 +20,11 @@ export default {
             .then(emails => this.emails = emails)
     },
     methods: {
+        itemSelected(id){
+            this.selectedItems.push(id)
+            console.log(this.selectedItems);
+            
+        },
         setFilter(filter) {
             emailService.query(filter)
             .then(emails => this.emails = emails)

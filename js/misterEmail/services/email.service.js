@@ -9,9 +9,9 @@ export const emailService = {
   query,
   getEmailById,
   nextEmail,
-  prevEmail
-  // addReview,
-  // deleteReview,
+  prevEmail,
+  deleteEmail,
+  updateItem,
 };
 
 const KEY = "emails";
@@ -51,26 +51,28 @@ function prevEmail(emailId) {
     });
 }
 
-function deleteCar(carId) {
-  return storageService.load(KEY).then(cars => {
-    var carIdx = cars.findIndex(car => car.id === carId);
-    cars.splice(carIdx, 1);
-    return storageService.store(KEY, cars);
+function deleteEmail(emailId) {
+  console.log('deleting email');
+  
+  return storageService.load(KEY).then(emails => {
+    var emailIdx = emails.findIndex(email => email.id === emailId);
+    emails.splice(emailIdx, 1);
+    return storageService.store(KEY, emails);
   });
 }
 
-function saveCar(car) {
-  return storageService.load(KEY).then(cars => {
+function updateItem(email) {
+  return storageService.load(KEY).then(emails => {
     // Update
-    if (car.id) {
-      var carIdx = cars.findIndex(currCar => currCar.id === car.id);
-      cars.splice(carIdx, 1, car);
+    if (email.id) {
+      var emailIdx = emails.findIndex(currEmail => currEmail.id === email.id);
+      emails.splice(emailIdx, 1, email);
     } else {
       // Add
-      car.id = utilService.makeId();
-      cars.push(car);
+      email.id = utilService.makeId();
+      emails.push(email);
     }
-    return storageService.store(KEY, cars);
+    return storageService.store(KEY, emails);
   });
 }
 
@@ -86,6 +88,7 @@ function createEmail() {
   var email = {
     id: utilService.makeId(),
     name: faker.name.findName(),
+    important: false,
     emailAdrs: faker.internet.email(),
     subject: faker.lorem.sentence(),
     body: faker.lorem.paragraphs(3),

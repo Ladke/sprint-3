@@ -16,14 +16,42 @@ ul{
 .email-preview:hover{
     cursor: pointer;
 }
-
+.screen {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: var(--superLight);
+    opacity: 0.7;
+    transition: opacity .3s;
+    cursor: pointer;
+}
 
 .main-nav{
     position: fixed;
+    font-weight: 600;
     z-index: 2;
     top:0;
-    left: 0;
-    font-size: 40px;
+    left: -160px;
+    padding: 20px;
+    padding-right: 30px;
+    font-size: 2rem;
     height: 100vh;
+    width:120px;
+    color: var(--dark);
     background-color: var(--light);
+    transition: 0.3s;
+
+
+}
+
+.main-nav:hover{
+    transform: translate(160px);
+
+}
+.main-nav.open{
+    transform: translate(90px);
+    background-color: green;
+
 }
