@@ -28,17 +28,30 @@ ul{
     cursor: pointer;
 }
 
+.nav-items{
+    
+   
+    margin-bottom: 8px;
+
+}
+.nav-items:hover{
+    cursor: pointer;
+    color: var(--darkL);
+    margin-bottom: 8px;
+
+}
+
 .main-nav{
     position: fixed;
     font-weight: 600;
     z-index: 2;
-    top:0;
-    left: -160px;
+    top:60px;
+    left: -200px;
     padding: 20px;
     padding-right: 30px;
     font-size: 2rem;
     height: 100vh;
-    width:120px;
+    width:150px;
     color: var(--dark);
     background-color: var(--light);
     transition: 0.3s;
@@ -47,11 +60,27 @@ ul{
 }
 
 .main-nav:hover{
-    transform: translate(160px);
-
+    transform: translate(198px);
 }
 .main-nav.open{
-    transform: translate(90px);
- 
+    transform: translate(198px);
 
+
+}
+
+.close-nav{
+    text-align: right;
+    margin-bottom: 15px;
+    font-size: 2rem;
+}
+
+@media (min-width: 680px){
+    .main-nav{
+        position: fixed;
+        font-weight: 600;
+        
+        top:60px;
+        left: -198px;
+ 
+    }
 }

@@ -1,18 +1,18 @@
 export default {
     template:`
-    <section class="car-filter">
-        <h3>Filter</h3>
-        <input type="text" v-model="filter.byVendor" @input="emitFilter" placeholder="Filter Cars" />
+    <section class="email-filter">
+        <input type="text" v-model="searchWord" @input="emitFilter" placeholder="Search Emails" /><span>Go</span>
     </section>
     `,
     data() {
         return {
-            filter: {byVendor: ''}
+            searchWord: '',
+
         }
     },
     methods : {
         emitFilter() {
-            this.$emit('filtered', this.filter)
+            this.$emit('filtered', this.searchWord)
         }
     }
 }

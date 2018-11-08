@@ -25,10 +25,7 @@ export default {
             console.log(this.selectedItems);
             
         },
-        setFilter(filter) {
-            emailService.query(filter)
-            .then(emails => this.emails = emails)
-        }
+
     },
     
     components: {

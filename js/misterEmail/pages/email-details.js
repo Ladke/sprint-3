@@ -1,5 +1,5 @@
 import { emailService } from "../services/email.service.js";
-// import busService, {USR_MSG_DISPLAY} from '../../services/event-bus.service.js'
+import eventBus from "../services/event-bus.service.js";
 
 export default {
   template: `
@@ -25,7 +25,8 @@ export default {
           </section>
 
           <section class="email-bottom-ctrl flex around">
-          <i class="fas fa-reply"></i>
+          <!-- <router-link to="/misteremail/edit"><i class="fas fa-reply"></i></router-link> -->
+          <i class="fas fa-reply" @click="onReply"></i>
           <i class="fas fa-reply-all"></i>
           </section>
         </section>
@@ -39,10 +40,8 @@ export default {
   },
 
   methods: {
-    onNext(){
-      var id = emailService.nextEmail()
-      .then(id => (log(id)))
-      // emailService.getEmailById(id).then(email => (email.isRead = true));
+    onNext() {
+      var id = emailService.nextEmail().then(id => log(id));
       this.$router.push(`/misteremail/${id}`);
     },
     emailRead() {
@@ -50,13 +49,19 @@ export default {
       this.$router.push("/misteremail");
     },
     onDeleteEmail() {
-      emailService.deleteEmail(this.email.id).then(res => {
-        // busService.$emit(USR_MSG_DISPLAY, {txt: `Car ${this.car.vendor} Deleted`, type:'success' })
+        emailService.deleteEmail(this.email.id).then(res => {
         this.$router.push("/misteremail");
       });
     },
     goBack() {
       this.$router.push("/misteremail");
+    },
+
+    onReply() {
+      console.log(this.email.emailAdrs);
+
+      eventBus.$emit("reply-email", this.email.subject, this.email.emailAdrs);
+      this.$router.push("/misteremail/edit");
     },
 
     loadEmailData() {
@@ -78,17 +83,17 @@ export default {
   watch: {
     "$route.params.emailId": function(id, prevValue) {
       console.log(id);
-      
+
       this.loadEmailData();
     }
   },
-  
-        created() {
-          this.loadEmailData().then(() => {
-            this.email.isRead = true;
-            console.log(this.email.isRead);
-          });
-        },
+
+  created() {
+    this.loadEmailData().then(() => {
+      this.email.isRead = true;
+      console.log(this.email.isRead);
+    });
+  },
   destroyed() {
     emailService.updateItem(this.email);
   }
