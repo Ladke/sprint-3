@@ -2,7 +2,7 @@
 
 import storageService from "./storage.service.js";
 import utilService from "./util.service.js";
-import eventBus, { USR_MSG_DISPLAY } from "./event-bus.service.js";
+// import eventBus, { USR_MSG_DISPLAY } from "./event-bus.service.js";
 
 
 export const emailService = {
@@ -23,11 +23,9 @@ function query(filter = null) {
       emails = generateEmails();
       storageService.store(KEY, emails);
     }
-
-    console.log("emails: ", emails);
     if (filter === null) return emails;
-    // else return emails.filter(car =>
-    //                 car.vendor.toUpperCase().includes(filter.byVendor.toUpperCase()))
+    else return emails.filter(email =>
+                    email.body.toLowerCase().includes(filter.toLowerCase()))
   });
 }
 
@@ -48,7 +46,7 @@ function nextEmail(emailId) {
 function prevEmail(emailId) {
     return storageService.load(KEY).then(emails => {
         var emailIdx = emails.findIndex(email => email.id === emailId);
-        return (emails[emailIdx - 1].id)? (emails[emailIdx - 1].id) : (emails[0].id)
+        return (emailIdx === 0)?  (emails[0].id): (emails[emailIdx - 1].id)
     });
 }
 

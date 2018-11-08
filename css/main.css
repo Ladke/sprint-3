@@ -13,5 +13,8 @@
 @import url('./misterEmail/email-list.css');
 @import url('./misterEmail/emailbase.css');
 @import url('./misterEmail/emailDetails.css');
-@import url('./misterEmail/emailPreview.css');   
+@import url('./misterEmail/emailPreview.css'); 
+@import url('./misterEmail/emailEdit.css'); 
+@import url('./misterEmail/emailFilter.css');
+
  

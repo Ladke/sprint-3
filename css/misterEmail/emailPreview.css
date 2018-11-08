@@ -33,3 +33,10 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.email-check{
+    transform: scale(1.5);
+    margin: auto;
+    margin-right: 10px;
+    margin-left: 0;
+}

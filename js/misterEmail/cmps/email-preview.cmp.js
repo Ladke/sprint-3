@@ -2,7 +2,7 @@ export default {
     props: ['email'],
     template: `
          <li class="email-preview flex row " :class="{unRead: !email.isRead}">
-            <input type="checkbox"  @click.stop="itemSelected">  
+            <input type="checkbox"  @click.stop="itemSelected" class="email-check flex">  
             <div class="prev-content flex column">
                 <h4 class="email-sender flex between"><span>{{email.name}}</span>
                 <span class="email-date">&emsp;{{time}}</span></h4>

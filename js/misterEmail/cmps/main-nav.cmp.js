@@ -1,34 +1,43 @@
 export default {
   props: ["emails"],
   template: `
-        <section>
 
-          <!-- <div class="screen" @click="closeNav"></div> -->
           <section class="main-nav">
-              <div><i class="fas fa-globe-americas"></i>&emsp;All</div>
-              <div><i class="fas fa-envelope"></i>&emsp;Unread</div>
-              <div><i class="fas fa-envelope-open"></i>&emsp;Read</div>
+       
+              <div class="nav-items">
+              <i class="fas fa-globe-americas"></i>    
+                  <span>&emsp;All</span>  <span>&emsp;&emsp;{{totalEmails}}</span>
+                 
+              </div>
+              
+              <div class="nav-items">
+                  <i class="fas fa-envelope"></i>
+                  <span>&emsp;Unread</span>  <span>&emsp;&emsp;{{unRead}}</span> </div>
+              
+              
+              <div class="nav-items">
+                <i class="fas fa-envelope-open"></i>
+                 <span>&emsp;Read</span>
+                
+              </div>
+              
               <div><i class="fas fa-star"></i>&emsp;Important</div>
           </section>
-        </section>
         `,
-  method:{
-    closeNav(){
-      console.log('closing nav');
-      this.$emit('isNav, false')
-      
+  method: {},
+  computed: {
+
+    unRead() {
+      var unRead = 0;
+      this.emails.forEach(email => {
+        if (!email.isRead) unRead++;
+      });
+      return unRead;
+    },
+    totalEmails() {
+      return this.emails.length;
     }
   },
-  computed:{
-    unRead(){ 
-      var unRead = 0;
-       this.emails.forEach(email => {
-          return !email.isRead
-        })
-    },
-
- 
-},
   created() {
     console.log("Main nav here!");
   }
