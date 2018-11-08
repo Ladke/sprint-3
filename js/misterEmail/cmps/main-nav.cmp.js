@@ -24,7 +24,7 @@ export default {
       var unRead = 0;
        this.emails.forEach(email => {
           return !email.isRead
-        }
+        })
     },
 
  

@@ -15,7 +15,7 @@ export default {
             :email="email" @click.native="emailClicked(email.id)">
           </email-Preview>
         </ul>
-      <main-nav  :class="{ open: isNav }" :email="emails"></main-nav>
+      <main-nav  :class="{ open: isNav }" :emails="emails"></main-nav>
     </section>
     `,
   data() {

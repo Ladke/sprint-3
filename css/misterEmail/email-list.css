@@ -52,6 +52,6 @@ ul{
 }
 .main-nav.open{
     transform: translate(90px);
-    background-color: green;
+ 
 
 }

@@ -20,18 +20,13 @@ export default {
         },
     },
     computed:{
-        time(){
-            
-            return moment(this.email.sentAt).fromNow()
-          
-            
+        time(){ 
+            return moment(this.email.sentAt).fromNow()   
         },
         isRead(){
             return this.email.isRead
         }
     },
-    created() {
-        
-       
+    created() { 
     }
 }
