@@ -27,7 +27,6 @@ export default {
     emailClicked(id) {
       emailService.getEmailById(id).then(email => (email.isRead = true));
       this.$router.push(`/misteremail/${id}`);
-      console.log("email selected");
       this.$emit("selected-email", id);
     }
   },

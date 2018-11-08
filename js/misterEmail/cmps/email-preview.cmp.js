@@ -1,17 +1,17 @@
 export default {
     props: ['email'],
     template: `
-         <li class="email-preview" :class="{unRead: !email.isRead}">
-            <input type="checkbox"  @click.stop="itemSelected">   
-            <h4 class="email-subject">From: <span>{{email.name}}</span></h4>
-            <div>{{email.subject}}</div>
+         <li class="email-preview flex row " :class="{unRead: !email.isRead}">
+            <input type="checkbox"  @click.stop="itemSelected">  
+            <div class="prev-content flex column">
+                <h4 class="email-sender flex between"><span>{{email.name}}</span>
+                <span class="email-date">&emsp;{{time}}</span></h4>
+                <div class="prev-subject">{{email.subject}}</div>
+            </div> 
+            <!-- <div class="prev-body">{{email.body}}</div> -->
         </li>
         `,
-    // data(){
-    //     return{
-    //         isRead:null
-    //     }
-    // }
+  
     methods:{
         itemSelected(){
             console.log(this.email.id);
@@ -20,12 +20,18 @@ export default {
         },
     },
     computed:{
+        time(){
+            
+            return moment(this.email.sentAt).fromNow()
+          
+            
+        },
         isRead(){
             return this.email.isRead
         }
     },
     created() {
-       console.log('is read', this.email.isRead);
+        
        
     }
 }

@@ -12,6 +12,7 @@ export const emailService = {
   prevEmail,
   deleteEmail,
   updateItem,
+  sortByDate,
 };
 
 const KEY = "emails";
@@ -40,14 +41,14 @@ function getEmailById(emailId) {
 function nextEmail(emailId) {
   return storageService.load(KEY).then(emails => {
     var emailIdx = emails.findIndex(email => email.id === emailId);
-    return (!emails[emailIdx + 1].id)? (emails[0].id) : (emails[emailIdx + 1].id)
+    return (emails[emailIdx + 1].id)? (emails[emailIdx + 1].id) : (emails[emailIdx].id)
   });
 }
 
 function prevEmail(emailId) {
     return storageService.load(KEY).then(emails => {
         var emailIdx = emails.findIndex(email => email.id === emailId);
-        return (!emails[emailIdx - 1].id)? (emails[emails.length].id) : (emails[emailIdx - 1].id)
+        return (emails[emailIdx - 1].id)? (emails[emailIdx - 1].id) : (emails[0].id)
     });
 }
 
@@ -59,6 +60,16 @@ function deleteEmail(emailId) {
     emails.splice(emailIdx, 1);
     return storageService.store(KEY, emails);
   });
+}
+
+function dateSort(a, b) {
+  var a = a.sentAt;
+  var b = b.sentAt;
+  if (a < b)
+      return 1;
+  if (a > b)
+      return -1;
+  return 0;
 }
 
 function updateItem(email) {
@@ -81,7 +92,15 @@ function generateEmails() {
   for (let i = 0; i < 10; i++) {
     emails.push(createEmail());
   }
+  emails = emails.sort(dateSort)
   return emails;
+}
+
+function sortByDate(){
+  return storageService.load(KEY)
+  .then(emails=> emails.sort(dateSort))
+
+
 }
 
 function createEmail() {
