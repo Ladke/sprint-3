@@ -8,7 +8,7 @@ export const notesService = {
     removeLabel,
     findById,
     addNote,
-    // removeNote
+    removeNote
 }
 
 const NOTES_KEY = 'notes';
@@ -52,9 +52,9 @@ function addNote(note) {
     storageHandler.store(NOTES_KEY, notesDB);
 }
 
-// function removeNote(id) {
-//     let notes = notesDB.filter(note => id !== note.id);
+function removeNote(id) {
+    let notes = notesDB.filter(note => id !== note.id);
 
-//     storageHandler.store(NOTES_KEY, notes);
-//     notesDB = notes;
-// }
+    storageHandler.store(NOTES_KEY, notes);
+    notesDB = notes;
+}

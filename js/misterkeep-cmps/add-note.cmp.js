@@ -57,11 +57,12 @@ export default {
             this.onEdit = true;
             this.$refs.textInput.focus();
         },
+        
         focusInput() {
             this.$refs.textInput.focus();
         },
         close(e) {
-            if (! this.$refs.noteInput.contains(e.target) ){
+            if (! this.$refs.noteInput.contains(e.target)){
                 this.commitNote()
             }
         },
@@ -108,8 +109,17 @@ export default {
 
     created() {
         window.addEventListener('click', this.close);
-        eventBus.$on('open-colors', () => this.showColors = !this.showColors)
-        eventBus.$on('change-color', this.changeColor)
+
+        eventBus.$on('open-colors', () => this.showColors = !this.showColors);
+
+        eventBus.$on('change-color', this.changeColor);
+
+        eventBus.$on('edit-note', (note) => {
+            document.event.target = this.$refs.textInput;
+            this.note = note;
+            this.openForm();
+        });
+        
     },
     
     beforeDestroy() {

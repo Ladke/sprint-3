@@ -59,6 +59,10 @@ export default {
         changeType(type) {
             this.type = type;
             console.log(type);           
+        },
+        removeNote(id) {          
+            notesService.removeNote(id)
+            this.notes = notesService.query();
         }
     },
 
@@ -69,7 +73,8 @@ export default {
     },
 
     created() {
-        eventBus.$on('change-type', this.changeType)
+        eventBus.$on('change-type', this.changeType),
+        eventBus.$on('delete-note', this.removeNote)
         console.log(this.notes)
     },
 

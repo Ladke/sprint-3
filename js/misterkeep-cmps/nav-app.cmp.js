@@ -20,7 +20,7 @@ export default {
                 </li>
 
                 <li class="nav-item link-item">
-                    <svg class="icon email" viewBox="0 0 32 32" ><path :d="icons.email"></path></svg>
+                    <svg class="icon email-icon" viewBox="0 0 32 32" ><path :d="icons.email"></path></svg>
                     <router-link class= "link" exact to = "/misteremail" >mister email</router-link>
                 </li>
             </nav>

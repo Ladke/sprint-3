@@ -13,18 +13,18 @@ export default {
     },
 
     template: `
-        <div class="note-card" @mouseenter="openControllers" @mouseleave="openControllers">
+        <div class="note-card" @mouseenter="openControllers" @mouseleave="openControllers" :style= "{backgroundColor: this.note.backgroundColor }">
             <svg 
                 class="icon_small icon-edit-note" 
                 v-if="isShow"  viewBox="0 0 24 24"
-                @click="editNote(note.id)">
+                @click="editNote()">
                 <path :d="editIcon" title="edit"></path>
             </svg>
             <h2 class="note-title">{{note.title}}</h2>
             <p class="note-text">{{note.text}}</p>
 
             <div class="controllers-box">
-                <note-controllers v-if="isShow" :isNote="true"></note-controllers>
+                <note-controllers v-if="isShow" :noteId="this.note.id"></note-controllers>
             </div>
         </div>
     `,
@@ -40,9 +40,9 @@ export default {
         openControllers() {
             this.isShow = !this.isShow;
         },
-        editNote(id) {
-            // eventBus.$emit('edit-note', this.note)
-            // notesService.removeNote(id)
+        editNote() {
+            eventBus.$emit('edit-note', {...this.note});
+            eventBus.$emit('delete-note', this.note.id);
         }
     },
 

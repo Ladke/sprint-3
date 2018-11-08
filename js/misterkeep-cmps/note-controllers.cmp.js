@@ -3,7 +3,7 @@ import iconsD from '../misterkeep-services/icons.js';
 import {eventBus} from '../misterkeep-services/evenbus.js';
 
 export default {
-    props: ['isNote'],
+    props: ['noteId'],
 
     components: {
         
@@ -20,7 +20,8 @@ export default {
             <svg class="icon_small ball" title="pin to top">
                 <use xlink:href="css/img/symbol.svg#icon-pin"></use>
             </svg>
-            <svg class="icon_small x" viewBox="0 0 24 24" v-if="isNote"><path :d="icons.x" title="close" @click="deleteNote"></path></svg>
+
+            <svg class="icon_small x" viewBox="0 0 24 24" v-if="noteId"><path :d="icons.x" title="close" @click="deleteNote"></path></svg>
             <slot></slot>
         </div>
     `,
@@ -35,6 +36,7 @@ export default {
         deleteNote() {
             eventBus.$emit('delete-note', this.noteId);
         },
+
         openNev() {
             eventBus.$emit('open-colors');
         }
