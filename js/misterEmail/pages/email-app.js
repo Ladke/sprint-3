@@ -6,7 +6,7 @@ import emailList from '../cmps/email-list.cmp.js'
 export default {
     template: `
         <section class="email">
-            <email-list :emails="emails"  @selected-item ="itemSelected($event)"></email-list>
+            <email-list :emails="emails"  @selected-item ="itemSelected"></email-list>
         </section>
     `,
     data() {
