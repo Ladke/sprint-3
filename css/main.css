@@ -1,5 +1,6 @@
 
 @import url('./base.css');
+@import url('./home.css');
 @import url('./misterkeep/base.css');
 @import url('./misterkeep/nav.css');
 @import url('./misterkeep/searchbar.css');
@@ -7,6 +8,7 @@
 @import url('./misterkeep/newNote.css');
 @import url('./misterkeep/noteControle.css');
 @import url('./misterkeep/noteCard.css'); 
+@import url('./misterkeep/msg.css'); 
 
 @import url('./misterEmail/email-list.css');
 @import url('./misterEmail/emailbase.css');

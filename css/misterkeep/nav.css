@@ -47,7 +47,7 @@
 .slide-down-enter-active, .links {
     position: fixed;
     z-index: 2;
-    background-color: rgb(121, 206, 240); 
+    background-color: rgb(188, 231, 248);
     right: 0;
     top: 75px;
     padding: 2rem;

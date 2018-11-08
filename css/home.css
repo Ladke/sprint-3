@@ -1,0 +1,108 @@
+
+ .home-contant {
+    z-index: 1;
+    position: relative;
+    text-align: center;
+    padding-top: 40vh;
+  }
+
+  .icon-home {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+  }
+  .icon_note-home {
+    left: 45%;
+  }
+  .icon_mail-home {
+    left: 55%;
+  }
+  .icon_mail-home:hover {
+    fill: rgb(240, 5, 5);
+  }
+  .icon_note-home:hover {
+    fill: rgb(146, 240, 5);
+  }
+  .home-header{
+      z-index: 1;
+      background-image: linear-gradient(to right, rgb(127, 147, 200), rgb(107, 107, 184));
+      display: inline-block;
+      -webkit-background-clip: text;
+      color: transparent;
+      position: fixed;
+      font-size: 5rem;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+  }
+
+  #landing-header h1 {
+    color: #fff;
+    text-shadow: 1px 1px 1px #000, 
+                   3px 3px 5px #000000,
+                   4px 4px 10px DarkGray;
+  }
+  .slideshow { 
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .slideshow li { 
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    opacity: 0;
+    z-index: 0;
+    animation: imageAnimation 50s linear infinite; 
+  }
+  
+  .slideshow li:nth-child(1) { 
+    background-image: url(./img/welcome.jpg) 
+  }
+  .slideshow li:nth-child(2) { 
+    background-image: url(./img/task.jpg);
+    animation-delay: 10s; 
+  }
+  .slideshow li:nth-child(3) { 
+    background-image: url(./img/mail.jpg);
+    animation-delay: 20s; 
+  }
+  .slideshow li:nth-child(4) { 
+    background-image: url(./img/computer.jpg);
+    animation-delay: 30s; 
+  }
+  .slideshow li:nth-child(5) { 
+    background-image: url(./img/thank\ u.jpg);
+    animation-delay: 40s; 
+  }
+  
+  @keyframes imageAnimation { 
+    0% { 
+      opacity: 0; 
+      animation-timing-function: ease-in;
+    }
+    10% {
+      opacity: 1;
+      animation-timing-function: ease-out;
+    }
+    20% {
+      opacity: 1
+    }
+    30% {
+      opacity: 0
+    }
+  }
+  
