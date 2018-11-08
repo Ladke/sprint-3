@@ -8,7 +8,8 @@ export const notesService = {
     removeLabel,
     findById,
     addNote,
-    // removeNote
+    removeNote,
+    editNote
 }
 
 const NOTES_KEY = 'notes';
@@ -52,9 +53,27 @@ function addNote(note) {
     storageHandler.store(NOTES_KEY, notesDB);
 }
 
-// function removeNote(id) {
-//     let notes = notesDB.filter(note => id !== note.id);
+function removeNote(id) {
+    let notes = notesDB.filter(note => id !== note.id);
 
-//     storageHandler.store(NOTES_KEY, notes);
-//     notesDB = notes;
-// }
+    storageHandler.store(NOTES_KEY, notes);
+    notesDB = notes;
+}
+
+function editNote(id, prop) {
+    console.log(findById(id));
+    
+    let note = {...findById(id), ...prop};
+    
+    
+    let notes = notesDB.map(currNote => {
+        if (id === currNote.id){
+            currNote = {...note}
+        }
+        return currNote;
+    });
+   console.log('notes service', notes);
+   
+    storageHandler.store(NOTES_KEY, notes);
+    notesDB = notes;
+}

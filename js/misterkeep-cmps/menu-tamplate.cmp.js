@@ -17,7 +17,7 @@ export default {
     template: `
     <section class="misterkeep_menu">
         <nav class="menu_nav">
-            <div class="menu_burger">
+            <div class="menu_burger" @click="openSideNav">
                 <svg class="icon icon_burger" viewBox="0 0 24 24"><path :d="icons.burgerBar"></path></svg>
             </div>
             <div class="icon-box">
@@ -48,6 +48,9 @@ export default {
     methods: {
         toggleNav() {
             this.isShow = !this.isShow;
+        },
+        openSideNav(){
+            this.$emit('open-nav')
         }
     },
 

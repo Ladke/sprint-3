@@ -1,5 +1,5 @@
 .mister-keep {
-    height: 100vh;
+    min-height: 100vh;
 }
 .main-body {
     height: 100%;

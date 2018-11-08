@@ -3,7 +3,7 @@
 }
 .menu_nav {
     padding: 8px;
-    background-color: rgb(121, 206, 240); 
+    background-color: rgb(188, 231, 248); 
     display: flex;
 }
 .menu_burger {
@@ -78,4 +78,30 @@
 }
 .link:visited, .link:active ,.link:hover{
     color: rgb(0, 0, 0);
+}
+@media(max-width: 550px) {
+    .icon-box {
+        font-size: 2rem;
+    }
+    .icon_lamp {
+        margin-right: 0;
+    }
+    .menu_burger {
+        margin: 0;
+        padding: 1rem;
+    }
+}
+
+@media(max-width: 450px) {
+    .menu_nav {
+        flex-wrap: wrap;
+    }
+    .nav-icon {
+        right: 0;
+        position: absolute;
+        top: 18px
+    }
+    .slide-down-enter-active, .links {
+        top: 100px;
+    }
 }

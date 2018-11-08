@@ -1,6 +1,7 @@
 'use strict'
 
 import iconsD from '../misterkeep-services/icons.js';
+import {eventBus} from '../misterkeep-services/evenbus.js';
 
 export default {
     template: `
@@ -8,7 +9,7 @@ export default {
 
                 <input
                     ref="search"
-                    @change="search"
+                    @input="search"
                     class="form-input"
                     id="search"
                     v-model="filter"
@@ -30,13 +31,7 @@ export default {
 
     methods: {
         search(){
-            console.log(this.filter);
-            this.filter = '';
-        },
-
-        removeFocus() {           
-            this.filter = '';
-            this.$refs.search.blur();
+            eventBus.$emit('set-filter', this.filter);
         }
     },
 

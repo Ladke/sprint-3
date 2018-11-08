@@ -63,7 +63,8 @@ export default {
 
     data() {
         return {
-            icons: iconsD
+            icons: iconsD,
+            el: undefined
         }
     },
 

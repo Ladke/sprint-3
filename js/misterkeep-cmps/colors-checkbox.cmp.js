@@ -2,9 +2,7 @@
 import {eventBus} from '../misterkeep-services/evenbus.js';
 
 export default {
-    components: {
-        
-    },
+    props: ['noteCard'],
 
     template: `
             <div>
@@ -26,18 +24,7 @@ export default {
 
     methods: {
         setColor() {
-            eventBus.$emit('change-color', this.pickedColor)
-            
+            eventBus.$emit('change-color', this.pickedColor, this.noteCard)           
         }
-    },
-
-    computed: {
-
-    },
-
-
-
-    mounted() {
-
     }
 }
