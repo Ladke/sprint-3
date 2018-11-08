@@ -39,6 +39,5 @@ export default {
     }
   },
   created() {
-    console.log("Main nav here!");
   }
 };

@@ -1,15 +1,13 @@
-// import utilService from './util.service.js'
 
 import storageService from "./storage.service.js";
 import utilService from "./util.service.js";
-// import eventBus, { USR_MSG_DISPLAY } from "./event-bus.service.js";
 
 
 export const emailService = {
   query,
   getEmailById,
-  nextEmail,
-  prevEmail,
+  nextEmailId,
+  prevEmailId,
   deleteEmail,
   updateItem,
   sortByDate,
@@ -36,17 +34,17 @@ function getEmailById(emailId) {
 }
 
 
-function nextEmail(emailId) {
+function nextEmailId(emailId) {
   return storageService.load(KEY).then(emails => {
     var emailIdx = emails.findIndex(email => email.id === emailId);
     return (emails[emailIdx + 1].id)? (emails[emailIdx + 1].id) : (emails[emailIdx].id)
   });
 }
 
-function prevEmail(emailId) {
+function prevEmailId(emailId) {
     return storageService.load(KEY).then(emails => {
         var emailIdx = emails.findIndex(email => email.id === emailId);
-        return (emailIdx === 0)?  (emails[0].id): (emails[emailIdx - 1].id)
+        return (emailIdx === 0)?  (emails[0].id): (emails[emailIdx -1].id)
     });
 }
 
@@ -97,8 +95,6 @@ function generateEmails() {
 function sortByDate(){
   return storageService.load(KEY)
   .then(emails=> emails.sort(dateSort))
-
-
 }
 
 function createEmail() {
@@ -112,6 +108,5 @@ function createEmail() {
     isRead: false,
     sentAt: faker.date.past()
   };
-  // console.log(book);
   return email;
 }

@@ -5,25 +5,37 @@ ul{
 .email-subject{
     margin: 0;
 }
-
+.fa-plus{
+    color: var(--boomL);
+    font-size: 4rem;
+}
+.logo {
+    display: none;
+}
 .email-head{
+    justify-content: space-between;
     position: fixed;
     top:0;
     left: 0;
     background-color: var(--mid);
     height: 60px;
     width: 100%;
-    
     z-index: 1;
-    font-size: 3rem;
+    font-size: 2.2rem;
     align-items: center;
-    padding: 0 25px;
+    /* padding: 0 15px; */
     color: var(--superLight);
     margin-bottom: 15px;
 }
 
+.email-head i{
+    padding: 0 15px;
+
+}
+
 .email-list{
     margin-top: 65px;
+    padding: 10px;
 }
 
 
@@ -51,8 +63,9 @@ ul{
 
 
 .prev-content{
-    width: 80vw;
+    width: 100%;
     padding-right: 15px;
+    padding-left: 15px;
 }
 
 .prev-subject{
@@ -61,7 +74,7 @@ ul{
     text-overflow: ellipsis;
 }
 
-.email-check{
+/* .email-check{
     width: 10px;
     transform: scale(1.5);
     margin: auto;
@@ -69,7 +82,7 @@ ul{
     margin-left: 0
     10px;;
     padding-left: 10px;
-}
+} */
 
 .burger{
     visibility: visible;
@@ -79,7 +92,7 @@ ul{
 .email-preview{
 
     border-bottom: 1px solid var(--mid);
-    padding: 8px 0;
+    /* padding: 8px 0; */
     /* margin-bottom: 8px; */
 }
 
@@ -116,12 +129,12 @@ ul{
     top:60px;
     left: -200px;
     padding: 20px;
-    padding-right: 30px;
+    /* padding-right: 30px; */
     font-size: 2rem;
     height: 100vh;
     width:200px;
     color: var(--dark);
-    background-color: var(--light);
+    background-color: var(--boomL);
     transition: 0.3s;
 
 
@@ -161,4 +174,15 @@ ul{
     .burger{
         visibility: hidden;
     }
+
+    .email-head{
+        justify-content: flex-end;
+    }
+
+    .logo {
+        display: inline;
+        color: var(--superLight);
+    }
+
+
 }

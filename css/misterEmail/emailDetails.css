@@ -8,7 +8,7 @@
 }
 
 .emails-nav{
-    font-size: 3rem;
+    font-size: 2rem;
     padding: 0 15px;
     color: var(--dark);
     margin-bottom: 15px;
@@ -20,6 +20,10 @@
 
     font-size: 3rem;   
     color: var(--dark);
+}
+
+.emails-nav div:hover{
+    cursor: pointer;
 }
 
 @media (min-width:680px){

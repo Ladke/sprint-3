@@ -41,6 +41,7 @@ div.contact{
 
 .submit-btn{
     font-size: 2rem;
+    text-align: right;
 }
 
 .submit-btn:hover{

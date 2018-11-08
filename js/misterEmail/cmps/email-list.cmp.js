@@ -7,12 +7,15 @@ export default {
   props: ["emails"],
   template: `
       <section>
-        <div class="email-head flex between">
-          <i v-if="!isNav" class="fas fa-bars burger" @click="isNav=!isNav"></i>
-          <i  v-if="isNav" class="fas fa-times" @click="isNav=!isNav"></i>
-          <i class="fas fa-plus" @click="addEmail"></i>
-          <i class="fas fa-search"  @click="isFilter=!isFilter"></i>
-          <router-link to="/"><i class=" goHome fas fa-home"></i></router-link>
+        <div>
+          <h2 class="logo">Mr.Mail</h2>
+          <div class="email-head flex">
+            <i v-if="!isNav" class="fas fa-bars burger" @click="isNav=!isNav"></i>
+            <i  v-if="isNav" class="fas fa-times" @click="isNav=!isNav"></i>
+            <i class="fas fa-plus" @click="addEmail"></i>
+            <i class="fas fa-search"  @click="isFilter=!isFilter"></i>
+            <router-link to="/"><i class=" goHome fas fa-home"></i></router-link>
+          </div>
         </div>
         <ul class="email-list">
           <email-Preview  v-for="email in emails"
