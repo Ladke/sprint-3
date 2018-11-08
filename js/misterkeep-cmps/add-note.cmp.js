@@ -79,9 +79,10 @@ export default {
                 title: this.note.title,
                 id: utils.makeId(),
                 date: undefined,
-                isReminder: false,
+                reminder: false,
                 isPinned: false,
-                isComplited: false,
+                achived: false,
+                trash: false,
                 onEdit: false,
                 label: '',
                 img: '',
@@ -105,7 +106,6 @@ export default {
             if(note) return;
             
             this.note.backgroundColor = color;
-            console.log(this.note.backgroundColor);
         }
     },
 

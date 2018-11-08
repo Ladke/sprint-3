@@ -53,7 +53,8 @@ export default {
          
         editNote() {
             eventBus.$emit('edit-note', {...this.note});
-            eventBus.$emit('delete-note', this.note.id);
+            eventBus.$emit('delete-note', this.note.id , true);
+            window.scrollTo(0, 0);
         }
     },
 
