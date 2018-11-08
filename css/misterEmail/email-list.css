@@ -30,13 +30,28 @@ ul{
 
 .main-nav{
     position: fixed;
+    font-weight: 600;
     z-index: 2;
     top:0;
-    left: 0;
+    left: -160px;
     padding: 20px;
+    padding-right: 30px;
     font-size: 2rem;
     height: 100vh;
-    width:300px;
+    width:120px;
     color: var(--dark);
     background-color: var(--light);
+    transition: 0.3s;
+
+
+}
+
+.main-nav:hover{
+    transform: translate(160px);
+
+}
+.main-nav.open{
+    transform: translate(90px);
+    background-color: green;
+
 }

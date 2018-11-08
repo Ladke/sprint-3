@@ -9,9 +9,8 @@ export const emailService = {
   query,
   getEmailById,
   nextEmail,
-  prevEmail
-  // addReview,
-  // deleteReview,
+  prevEmail,
+  deleteEmail,
 };
 
 const KEY = "emails";
@@ -51,11 +50,11 @@ function prevEmail(emailId) {
     });
 }
 
-function deleteCar(carId) {
-  return storageService.load(KEY).then(cars => {
-    var carIdx = cars.findIndex(car => car.id === carId);
-    cars.splice(carIdx, 1);
-    return storageService.store(KEY, cars);
+function deleteEmail(emailId) {
+  return storageService.load(KEY).then(emails => {
+    var emailIdx = emails.findIndex(email => email.id === emailId);
+    emails.splice(emailIdx, 1);
+    return storageService.store(KEY, emails);
   });
 }
 

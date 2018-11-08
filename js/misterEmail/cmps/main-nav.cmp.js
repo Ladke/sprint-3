@@ -1,19 +1,21 @@
 export default {
+  props: ["emails"],
   template: `
         <section>
 
-          <div class="screen" @click=""></div>
+          <!-- <div class="screen" @click="closeNav"></div> -->
           <section class="main-nav">
-              <div><i class="fas fa-globe-americas"></i>&ensp;All</div>
-              <div><i class="fas fa-envelope"></i>&ensp;Unread</div>
-              <div><i class="fas fa-envelope-open"></i>&ensp;Read</div>
-              <div><i class="fas fa-star"></i>&ensp;Important</div>
+              <div><i class="fas fa-globe-americas"></i>&emsp;All</div>
+              <div><i class="fas fa-envelope"></i>&emsp;Unread</div>
+              <div><i class="fas fa-envelope-open"></i>&emsp;Read</div>
+              <div><i class="fas fa-star"></i>&emsp;Important</div>
           </section>
         </section>
         `,
   method:{
     closeNav(){
       console.log('closing nav');
+      this.$emit('isNav, false')
       
     }
   },
