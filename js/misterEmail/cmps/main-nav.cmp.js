@@ -19,6 +19,16 @@ export default {
       
     }
   },
+  computed:{
+    unRead(){ 
+      var unRead = 0;
+       this.emails.forEach(email => {
+          return !email.isRead
+        })
+    },
+
+ 
+},
   created() {
     console.log("Main nav here!");
   }

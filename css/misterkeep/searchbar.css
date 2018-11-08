@@ -26,3 +26,9 @@
 .search_icon:active {
     transform: translateY(-1px);
 }
+
+@media(max-width: 450px) {
+    .notes-filter {
+        order: 2
+    }
+}

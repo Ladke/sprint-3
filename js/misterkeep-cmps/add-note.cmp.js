@@ -16,7 +16,7 @@ export default {
     template: `
         <section class="new-note" ref="noteInput" :style= "{backgroundColor: this.note.backgroundColor }">
             <input
-                v-if="onEdit"
+                v-if="showForm"
                 class="new-note-text"
                 v-model="note.title"
                 @keypress.enter="focusInput"
@@ -33,7 +33,7 @@ export default {
                 placeholder="Add new note...">
             </textarea>
 
-            <note-controllers  v-if="onEdit">
+            <note-controllers  v-if="showForm">
                 <colors-checkbox v-if="showColors"></colors-checkbox>
             </note-controllers>
         </section> 
@@ -42,7 +42,7 @@ export default {
     data() {
         return {
             icons: iconsD,
-            onEdit: false,
+            showForm: false,
             showColors: false,
             note: {
                 title: '',
@@ -54,50 +54,56 @@ export default {
 
     methods: {
         openForm() {
-            this.onEdit = true;
+            this.showForm = true;
             this.$refs.textInput.focus();
+            this.note.onEdit = true;
         },
         
         focusInput() {
             this.$refs.textInput.focus();
         },
-        close(e) {
-            if (! this.$refs.noteInput.contains(e.target)){
-                this.commitNote()
-            }
+
+        isNote() {
+            return this.note.text !== '' || this.note.title !== '';
         },
+
+        close(e) {         
+            if (! this.$refs.noteInput.contains(e.target) && this.isNote() && this.note.onEdit){
+                this.commitNote()               
+            } 
+        },
+
         commitNote() {
-            this.onEdit = false;
-            this.showColors = false;
-
-            // console.log(this.note.text);
-            if(this.note.text !== '' || this.note.title !== '') {
-                let newNote = {
-                    text :this.note.text,
-                    title: this.note.title,
-                    id: utils.makeId(),
-                    date: undefined,
-                    isReminder: false,
-                    isPinned: false,
-                    isComplited: false,
-                    label: '',
-                    img: '',
-                    backgroundColor: this.note.backgroundColor,
-                }
-
-                notesService.addNote(newNote)
+            let newNote = {
+                text :this.note.text,
+                title: this.note.title,
+                id: utils.makeId(),
+                date: undefined,
+                isReminder: false,
+                isPinned: false,
+                isComplited: false,
+                onEdit: false,
+                label: '',
+                img: '',
+                backgroundColor: this.note.backgroundColor,
             }
 
-            this.clearInput();
+            notesService.addNote(newNote)
+
+            this.resetState();
         },
 
-        clearInput(){
+        resetState(){
+            this.showForm = false;
+            this.showColors = false;
             this.note.text = '';
             this.note.title = '';
             this.note.backgroundColor = '';
         },
 
-        changeColor(color) {
+        changeColor(color, note) {
+            if(note) return;
+            
             this.note.backgroundColor = color;
             console.log(this.note.backgroundColor);
         }
@@ -115,9 +121,11 @@ export default {
         eventBus.$on('change-color', this.changeColor);
 
         eventBus.$on('edit-note', (note) => {
-            document.event.target = this.$refs.textInput;
+            if (this.isNote()) {
+                this.commitNote()
+            }
             this.note = note;
-            this.openForm();
+            this.$refs.textInput.focus(); 
         });
         
     },
@@ -126,3 +134,6 @@ export default {
         window.removeEventListener('click', this.close)
     },
 }
+
+
+ 

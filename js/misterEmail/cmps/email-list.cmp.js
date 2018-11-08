@@ -15,7 +15,7 @@ export default {
             :email="email" @click.native="emailClicked(email.id)">
           </email-Preview>
         </ul>
-      <main-nav  :class="{ open: isNav }" :email="emails"></main-nav>
+      <main-nav  :class="{ open: isNav }" :emails="emails"></main-nav>
     </section>
     `,
   data() {
@@ -27,7 +27,6 @@ export default {
     emailClicked(id) {
       emailService.getEmailById(id).then(email => (email.isRead = true));
       this.$router.push(`/misteremail/${id}`);
-      console.log("email selected");
       this.$emit("selected-email", id);
     }
   },

@@ -1,8 +1,16 @@
+.side__nav-enter-active, .side__nav-leave-active {
+    transition: all .4s ease-out;
+}
+
+.side__nav-enter, .side__nav-leave-to {
+    transform: translateX(-340px);
+}
+
 .side__nav {
     background-color: rgb(188, 231, 248); 
-    width: 25vw;
+    width: 36rem;
     min-height: 100%;
-    overflow-y: scroll;
+    left: 0;
 }
  
 .side__nav-list {
@@ -21,7 +29,6 @@
 .nav_item {
     min-height: 8rem;
     padding: 1rem 0 1rem 3rem;
-    border-radius: 0 50px 50px 0;
     display: flex;
     cursor: pointer;
     align-items: center;
@@ -62,4 +69,18 @@
     margin: 0;
     margin-top: 2rem;
     font-size: 2.6rem;
+}
+
+@media(max-width: 650px) {
+    .side__nav {
+        position: absolute;
+        z-index: 1;
+        width: 50vw;
+    }
+}
+
+@media(max-width: 500px) {
+    .nav_item {
+        min-height: 4rem;
+    }
 }
