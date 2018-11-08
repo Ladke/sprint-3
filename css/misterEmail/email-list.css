@@ -14,7 +14,7 @@ ul{
     height: 60px;
     width: 100%;
     
-    /* z-index: 1; */
+    z-index: 1;
     font-size: 3rem;
     align-items: center;
     padding: 0 25px;
@@ -24,6 +24,56 @@ ul{
 
 .email-list{
     margin-top: 65px;
+}
+
+
+
+.email-preview{
+    height: 60px;
+}
+
+.email-preview:hover{
+    background-color: var(--superLight);
+}
+
+.email-preview.unRead{
+    font-weight: 800;    
+    color: black;
+}
+.email-date{
+    font-weight: 400;
+}
+
+.email-sender{
+    margin: 5px 0;
+}
+
+
+
+.prev-content{
+    width: 80vw;
+    padding-right: 15px;
+}
+
+.prev-subject{
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.email-check{
+    width: 10px;
+    transform: scale(1.5);
+    margin: auto;
+    margin-right: 10px;
+    margin-left: 0
+    10px;;
+    padding-left: 10px;
+}
+
+.burger{
+    visibility: visible;
+    z-index: 3;
 }
 
 .email-preview{
@@ -69,17 +119,17 @@ ul{
     padding-right: 30px;
     font-size: 2rem;
     height: 100vh;
-    width:150px;
+    width:200px;
     color: var(--dark);
     background-color: var(--light);
     transition: 0.3s;
 
 
 }
-
+/* 
 .main-nav:hover{
     transform: translate(198px);
-}
+} */
 .main-nav.open{
     transform: translate(198px);
 }
@@ -100,7 +150,15 @@ ul{
         font-weight: 600;
         
         top:60px;
-        left: -198px;
+        left: 0;
+        /* left: -198px;
+        transform: translate(198px); */
  
+    }
+    .email-list{
+        margin-left:190px;
+    }
+    .burger{
+        visibility: hidden;
     }
 }
