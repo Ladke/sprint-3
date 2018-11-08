@@ -1,7 +1,7 @@
 export default {
     props: ['email'],
     template: `
-         <li class="email-preview" :class="isRead">
+         <li class="email-preview" :class="{unRead: !email.isRead}">
             <input type="checkbox"  @click.stop="itemSelected">   
             <h4 class="email-subject">From: <span>{{email.name}}</span></h4>
             <div>{{email.subject}}</div>
