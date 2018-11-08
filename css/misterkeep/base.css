@@ -1,4 +1,15 @@
+.mister-keep {
+    height: 100vh;
+}
+.main-body {
+    height: 100%;
+    display: flex;
+}
 .icon {
     width: 4rem;
     height: 4rem;
+}
+.email {
+    width: 3rem;
+    height: 3rem;
 }

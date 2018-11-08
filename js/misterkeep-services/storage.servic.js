@@ -3,6 +3,7 @@
 export default {
     store(key, any) {
         localStorage[key] = JSON.stringify(any);
+        console.log(localStorage[key]);
     },
 
     load(key) {
