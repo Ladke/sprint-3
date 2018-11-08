@@ -12,7 +12,7 @@ ul{
     left: 0;
     background-color: var(--mid);
     height: 60px;
-    width: 90%;
+    width: 100%;
     
     /* z-index: 1; */
     font-size: 3rem;
