@@ -1,5 +1,4 @@
 .send-email-container{
-
     width: 80vw;
     /* border: 1px solid gray; */
     text-align: left;
@@ -8,6 +7,22 @@
     color: var(--dark);
 
 
+}
+
+.email-edit{
+    margin-top: 70px;
+
+}
+
+input{
+    width: 100%;
+    margin-right:20px;
+
+}
+
+textarea{
+    width: 100%;
+    margin-right:20px;
 }
 
 

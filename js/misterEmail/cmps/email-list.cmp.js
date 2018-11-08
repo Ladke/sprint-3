@@ -8,7 +8,7 @@ export default {
   template: `
       <section>
         <div class="email-head flex between">
-          <i v-if="!isNav" class="fas fa-bars" @click="isNav=!isNav"></i>
+          <i v-if="!isNav" class="fas fa-bars burger" @click="isNav=!isNav"></i>
           <i  v-if="isNav" class="fas fa-times" @click="isNav=!isNav"></i>
           <i class="fas fa-plus" @click="addEmail"></i>
           <i class="fas fa-search"  @click="isFilter=!isFilter"></i>
