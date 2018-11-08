@@ -86,6 +86,7 @@ function createEmail() {
   var email = {
     id: utilService.makeId(),
     name: faker.name.findName(),
+    important: false,
     emailAdrs: faker.internet.email(),
     subject: faker.lorem.sentence(),
     body: faker.lorem.paragraphs(3),

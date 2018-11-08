@@ -16,14 +16,27 @@ ul{
 .email-preview:hover{
     cursor: pointer;
 }
-
+.screen {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: var(--superLight);
+    opacity: 0.7;
+    transition: opacity .3s;
+    cursor: pointer;
+}
 
 .main-nav{
     position: fixed;
     z-index: 2;
     top:0;
     left: 0;
-    font-size: 40px;
+    padding: 20px;
+    font-size: 2rem;
     height: 100vh;
+    width:300px;
+    color: var(--dark);
     background-color: var(--light);
 }
