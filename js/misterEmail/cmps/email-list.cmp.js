@@ -7,13 +7,13 @@ export default {
   props: ["emails"],
   template: `
       <section>
-          <div class="email-head flex">
-            <i v-if="!isNav" class="fas fa-bars burger" @click="isNav=!isNav"></i>
-            <i  v-if="isNav" class="fas fa-times" @click="isNav=!isNav"></i>
-            <i class="fas fa-plus" @click="addEmail"></i>
-            <i class="fas fa-search"  @click="isFilter=!isFilter"></i>
-            <router-link to="/"><i class="goHome fas fa-home"></i></router-link>
-          </div>
+        <div class="email-head flex">
+          <i v-if="!isNav" class="fas fa-bars burger" @click="isNav=!isNav"></i>
+          <i  v-if="isNav" class="fas fa-times" @click="isNav=!isNav"></i>
+          <i class="fas fa-plus" @click="addEmail"></i>
+          <i class="fas fa-search"  @click="isFilter=!isFilter"></i>
+          <router-link to="/"><i class="goHome fas fa-home"></i></router-link>
+        </div>
 
         <ul class="email-list">
           <email-Preview   v-if="emails" v-for="email in emails"
@@ -28,7 +28,6 @@ export default {
 
     </section>
     `,
-
   data() {
     return {
       email:null,
@@ -36,7 +35,6 @@ export default {
       isFilter: false
     }
   },
-
   methods: {
     emailClicked(email) {
       this.$router.push(`/misteremail/${email.id}`);
@@ -50,9 +48,6 @@ export default {
       emailService.query(filter).then(emails => (this.emails = emails));
     },
   },
-
-  computed: {},
-
   components: {
     emailPreview,
     mainNav,
@@ -60,8 +55,4 @@ export default {
     filterEmails
   },
 
-  created() {
-    // emailService.query()
-    // .then(emails => this.emails = emails)
-  },
 }

@@ -10,7 +10,7 @@ export default {
                       <span>&emsp;All</span>  <span>&emsp;&emsp;{{totalEmails}}</span>
                   </div>
                   
-                  <div class="nav-items" >
+                  <div class="nav-items">
                       <i class="fas fa-envelope"></i>
                       <span>&emsp;unread</span>  <span>&emsp;&emsp;{{unread.length}} </span>
                   </div>
@@ -18,27 +18,24 @@ export default {
                   
                   <div class="nav-items">
                     <i class="fas fa-envelope-open"></i>
-                    <span>&emsp;Read</span>
-                    
+                    <span>&emsp;Read</span>                
                   </div>
+
                   <div class="nav-items"><i class="fas fa-star"></i>&emsp;Important</div>
-                <!-- <div class="screen" ></div> -->
-             
+
           </section>
         `,
 
   data() {
     return {
-      // emails: null,
       unread: null
     };
   },
   methods: {
     unreadEmails() {
-      this.unread = this.emails.filter(email=> {
-        return email.isRead===false})
-        console.log(this.unread);
-        
+      this.unread = this.emails.filter(email => {
+        return email.isRead === false;
+      });
     },
 
     onDeleteEmail() {
@@ -46,22 +43,6 @@ export default {
         this.$router.push("/misteremail");
       });
     }
-
-
-
-    // onUnread() {
-    //   console.log(this.emails);
-
-    //   var unreadList = this.emails.filter(email => {
-    //     console.log(email);
-
-    //     return email.isRead === false;
-    //   });
-
-    //   this.unread = unreadList.length;
-    //   console.log(unreadList);
-    //   return this.unreadList;
-    // }
   },
   computed: {
     totalEmails() {
@@ -69,7 +50,6 @@ export default {
     }
   },
   created() {
-    
     this.unreadEmails();
   }
 };

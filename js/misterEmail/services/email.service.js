@@ -8,7 +8,6 @@ export const emailService = {
   prevEmailId,
   deleteEmail,
   updateItem
-  // sortByDate,
 };
 
 const KEY = "emails";
@@ -57,15 +56,6 @@ function deleteEmail(emailId) {
   });
 }
 
-// function emailRead(emailID){
-//   return storageService.load(KEY)
-//   .then(emails => {
-//       var carIdx = emails.findIndex(car => car.id === carId);
-//       emails.splice(carIdx, 1);
-//       return storageService.store(KEY, emails);
-//   })
-// }
-
 function dateSort(a, b) {
   var a = a.sentAt;
   var b = b.sentAt;
@@ -83,7 +73,7 @@ function updateItem(email) {
       email.id = utilService.makeId();
       emails.unshift(email);
     }
-    emails.sort(dateSort);     
+    emails.sort(dateSort);
     return storageService.store(KEY, emails);
   });
 }
@@ -110,7 +100,7 @@ function createEmail() {
     name: faker.name.findName(),
     important: false,
     emailFrom: faker.internet.email(),
-    emailTo: 'me@gmail.com',
+    emailTo: "me@gmail.com",
     subject: faker.lorem.sentence(),
     body: faker.lorem.paragraphs(3),
     isRead: false,

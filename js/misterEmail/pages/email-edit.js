@@ -1,5 +1,5 @@
 import { emailService } from "../services/email.service.js";
-import eventBus from "../services/event-bus.service.js";
+// import eventBus from "../services/event-bus.service.js";
 
 export default {
   template: `
@@ -15,7 +15,6 @@ export default {
             <hr>
             <p><textarea  rows="8" cols="70" v-model="email.body"></textarea ></p>
             <hr>
-            <!-- <div type="submit" class="submit-btn"><i class="fas fa-paper-plane" ></i></div>     -->
             <div type="submit" class="submit-btn" @click="saveMail">SEND</i></div>    
         </form>
     </section>
@@ -50,26 +49,15 @@ export default {
 
     saveMail() {
       this.email.sentAt = moment(Date.now()).format()
-      emailService.updateItem(this.email).then(() => {
-        console.log( this.email);
-        console.log("Saved!");
-        
+      emailService.updateItem(this.email).then(() => {    
         this.$router.push("/misteremail/");
       });
     },
-
-
   },
   components: {
     emailService
   },
   created() {
     this.loadEmailData() 
-
   },
-  watch: {
-    "$route.params.emailId": function(id, prevValue) {
-      this.loadEmailData();
-    }
-  }
 };

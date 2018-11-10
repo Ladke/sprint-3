@@ -14,6 +14,7 @@ export default {
           </div>
           <section class="email-main">
             <h3>From: {{email.name}}</h3>
+            <h3>Sent: {{time}}</h3>
             <h3>Subject: {{email.subject}}</h3>
             <hr>
             <p>{{email.body}}</p>
@@ -61,10 +62,7 @@ export default {
     },
     onReply() {
       this.$router.push(`/misteremail/edit/${this.email.id}`);
-      // eventBus.$emit("reply-email", this.email.subject, this.email.emailAdrs);
     },
-
-
     loadEmailData() {
       const emailId = this.$route.params.emailId;
       if (!emailId) return;
@@ -81,25 +79,23 @@ export default {
       });
     }
   },
-  components: {},
+  computed:{
+    time(){ 
+        return moment(this.email.sentAt).format('lll')  
+    } 
+  },
+
+  created() {
+    this.loadEmailData()
+      this.email.isRead = true;
+      emailService.updateItem(this.email);
+  },
 
   watch: {
     "$route.params.emailId": function(id, prevValue) {
       this.loadEmailData();
-    }
-  },
-
-  created() {
-    this.loadEmailData().then(() => {
       this.email.isRead = true;
-    });
-
-    setTimeout(() => {
-      emailService.updateItem(this.email), 500;
-    });
-  },
-
-  destroyed() {
-    emailService.updateItem(this.email);
+      emailService.updateItem(this.email);
+    }
   }
 };
