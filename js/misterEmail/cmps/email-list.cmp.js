@@ -4,7 +4,7 @@ import filterEmails from "./email-filter.js";
 import { emailService } from "../services/email.service.js";
 
 export default {
-  // props: ["emails"],
+  props: ["emails"],
   template: `
       <section>
           <div class="email-head flex">
@@ -31,7 +31,7 @@ export default {
 
   data() {
     return {
-      emails:null,
+      email:null,
       isNav: false,
       isFilter: false
     }
@@ -61,7 +61,7 @@ export default {
   },
 
   created() {
-    emailService.query()
-    .then(emails => this.emails = emails)
+    // emailService.query()
+    // .then(emails => this.emails = emails)
   },
 }

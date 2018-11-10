@@ -76,17 +76,15 @@ function dateSort(a, b) {
 
 function updateItem(email) {
   return storageService.load(KEY).then(emails => {
-    // Update
     if (email.id) {
       var emailIdx = emails.findIndex(currEmail => currEmail.id === email.id);
       emails.splice(emailIdx, 1, email);
     } else {
-      // Add
       email.id = utilService.makeId();
-      emails.push(email);
+      emails.unshift(email);
     }
-    sortByDate()
-    // return storageService.store(KEY, emails);
+    emails.sort(dateSort);     
+    return storageService.store(KEY, emails);
   });
 }
 
@@ -111,7 +109,8 @@ function createEmail() {
     id: utilService.makeId(),
     name: faker.name.findName(),
     important: false,
-    emailAdrs: faker.internet.email(),
+    emailFrom: faker.internet.email(),
+    emailTo: 'me@gmail.com',
     subject: faker.lorem.sentence(),
     body: faker.lorem.paragraphs(3),
     isRead: false,

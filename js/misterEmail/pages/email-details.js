@@ -1,5 +1,5 @@
 import { emailService } from "../services/email.service.js";
-import eventBus from "../services/event-bus.service.js";
+// import eventBus from "../services/event-bus.service.js";
 
 export default {
   template: `
@@ -51,18 +51,19 @@ export default {
 
     emailToUnread() {
       this.email.isRead = false;
-      emailService.updateItem(this.email)
+      emailService.updateItem(this.email);
       this.$router.push("/misteremail");
     },
     onDeleteEmail() {
       emailService.deleteEmail(this.email.id).then(() => {
-      this.$router.push("/misteremail");
+        this.$router.push("/misteremail");
       });
     },
     onReply() {
       this.$router.push(`/misteremail/edit/${this.email.id}`);
       // eventBus.$emit("reply-email", this.email.subject, this.email.emailAdrs);
     },
+
 
     loadEmailData() {
       const emailId = this.$route.params.emailId;
@@ -77,7 +78,6 @@ export default {
         email.isRead = true;
         this.email = email;
         console.log(this.email);
-        
       });
     }
   },
@@ -93,10 +93,13 @@ export default {
     this.loadEmailData().then(() => {
       this.email.isRead = true;
     });
-  },
-  destroyed(){
-    emailService.updateItem(this.email)
 
+    setTimeout(() => {
+      emailService.updateItem(this.email), 500;
+    });
+  },
+
+  destroyed() {
+    emailService.updateItem(this.email);
   }
-  
 };
