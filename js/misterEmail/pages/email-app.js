@@ -3,7 +3,7 @@ import emailList from '../cmps/email-list.cmp.js'
 
 export default {
     template: `
-        <section class="email-main">
+        <section class="email-container">
             <email-list  v-if="emails" :emails="emails"  @selected-item ="itemSelected"></email-list>
         </section>
     `,

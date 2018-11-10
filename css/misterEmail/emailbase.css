@@ -25,6 +25,7 @@ i:hover{
     cursor: pointer;
 }
 
-/* .inline{
-    display: inline;
-} */
+.email-container{
+    padding: 0 10px;
+    margin-bottom: 20px;
+}
