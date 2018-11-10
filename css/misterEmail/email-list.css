@@ -9,9 +9,9 @@ ul{
     color: var(--boomL);
     font-size: 4rem;
 }
-.logo {
+/* .logo {
     display: none;
-}
+} */
 .email-head{
     justify-content: space-between;
     position: fixed;
@@ -35,7 +35,7 @@ ul{
 
 .email-list{
     margin-top: 65px;
-    padding: 10px;
+    padding: 0;pre
 }
 
 
@@ -64,8 +64,8 @@ ul{
 
 .prev-content{
     width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
+    padding-right: 10px;
+    padding-left: 10px;
 }
 
 .prev-subject{
@@ -91,7 +91,7 @@ ul{
 
 .email-preview{
 
-    border-bottom: 1px solid var(--mid);
+    border-bottom: 1px solid var(--dark);
     /* padding: 8px 0; */
     /* margin-bottom: 8px; */
 }
@@ -129,16 +129,15 @@ ul{
     top:60px;
     left: -200px;
     padding: 20px;
-    /* padding-right: 30px; */
     font-size: 2rem;
     height: 100vh;
     width:200px;
     color: var(--dark);
-    background-color: var(--boomL);
-    transition: 0.3s;
+    background-color: var(--light);
 
 
 }
+
 /* 
 .main-nav:hover{
     transform: translate(198px);
@@ -179,10 +178,10 @@ ul{
         justify-content: flex-end;
     }
 
-    .logo {
+    /* .logo {
         display: inline;
         color: var(--superLight);
-    }
+    } */
 
 
 }

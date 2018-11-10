@@ -5,10 +5,11 @@ export default {
   template: `
         <section class="email-details" v-if="email">
           <div class="email-head flex between">
-            <i class="fas fa-arrow-left email-back" @click="goBack" title="Back to Emails"></i>
+            <router-link to="/misteremail"> <i class="fas fa-arrow-left email-back" title="Back to Emails"></i></router-link>
+           
             <i class="fas fa-trash-alt email-delete" @click = "onDeleteEmail" title="Delete"></i>
             <i  class="fas fa-envelope email-read" 
-            title="Mark as Unread" @click="emailRead"></i>
+            title="Mark as Unread" @click="emailToUnread"></i>
            
           </div>
           <section class="email-main">
@@ -48,19 +49,16 @@ export default {
       this.$router.push(`/misteremail/${this.prevEmailId}`);
     },
 
-    emailRead() {
+    emailToUnread() {
       this.email.isRead = false;
+      emailService.updateItem(this.email)
       this.$router.push("/misteremail");
     },
     onDeleteEmail() {
-      emailService.deleteEmail(this.email.id).then(res => {
-        this.$router.push("/misteremail");
+      emailService.deleteEmail(this.email.id).then(() => {
+      this.$router.push("/misteremail");
       });
     },
-    goBack() {
-      this.$router.push("/misteremail");
-    },
-
     onReply() {
       this.$router.push(`/misteremail/edit/${this.email.id}`);
       // eventBus.$emit("reply-email", this.email.subject, this.email.emailAdrs);
@@ -78,6 +76,8 @@ export default {
       return emailService.getEmailById(emailId).then(email => {
         email.isRead = true;
         this.email = email;
+        console.log(this.email);
+        
       });
     }
   },
@@ -94,8 +94,9 @@ export default {
       this.email.isRead = true;
     });
   },
+  destroyed(){
+    emailService.updateItem(this.email)
 
-  destroyed() {
-    emailService.updateItem(this.email);
   }
+  
 };

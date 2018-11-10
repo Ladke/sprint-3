@@ -1,7 +1,5 @@
-
 import storageService from "./storage.service.js";
 import utilService from "./util.service.js";
-
 
 export const emailService = {
   query,
@@ -9,8 +7,8 @@ export const emailService = {
   nextEmailId,
   prevEmailId,
   deleteEmail,
-  updateItem,
-  sortByDate,
+  updateItem
+  // sortByDate,
 };
 
 const KEY = "emails";
@@ -22,8 +20,10 @@ function query(filter = null) {
       storageService.store(KEY, emails);
     }
     if (filter === null) return emails;
-    else return emails.filter(email =>
-                    email.body.toLowerCase().includes(filter.toLowerCase()))
+    else
+      return emails.filter(email =>
+        email.body.toLowerCase().includes(filter.toLowerCase())
+      );
   });
 }
 
@@ -33,24 +33,23 @@ function getEmailById(emailId) {
   });
 }
 
-
 function nextEmailId(emailId) {
   return storageService.load(KEY).then(emails => {
     var emailIdx = emails.findIndex(email => email.id === emailId);
-    return (emails[emailIdx + 1].id)? (emails[emailIdx + 1].id) : (emails[emailIdx].id)
+    return emails[emailIdx + 1].id
+      ? emails[emailIdx + 1].id
+      : emails[emailIdx].id;
   });
 }
 
 function prevEmailId(emailId) {
-    return storageService.load(KEY).then(emails => {
-        var emailIdx = emails.findIndex(email => email.id === emailId);
-        return (emailIdx === 0)?  (emails[0].id): (emails[emailIdx -1].id)
-    });
+  return storageService.load(KEY).then(emails => {
+    var emailIdx = emails.findIndex(email => email.id === emailId);
+    return emailIdx === 0 ? emails[0].id : emails[emailIdx - 1].id;
+  });
 }
 
 function deleteEmail(emailId) {
-  console.log('deleting email');
-  
   return storageService.load(KEY).then(emails => {
     var emailIdx = emails.findIndex(email => email.id === emailId);
     emails.splice(emailIdx, 1);
@@ -58,13 +57,20 @@ function deleteEmail(emailId) {
   });
 }
 
+// function emailRead(emailID){
+//   return storageService.load(KEY)
+//   .then(emails => {
+//       var carIdx = emails.findIndex(car => car.id === carId);
+//       emails.splice(carIdx, 1);
+//       return storageService.store(KEY, emails);
+//   })
+// }
+
 function dateSort(a, b) {
   var a = a.sentAt;
   var b = b.sentAt;
-  if (a < b)
-      return 1;
-  if (a > b)
-      return -1;
+  if (a < b) return 1;
+  if (a > b) return -1;
   return 0;
 }
 
@@ -79,7 +85,8 @@ function updateItem(email) {
       email.id = utilService.makeId();
       emails.push(email);
     }
-    return storageService.store(KEY, emails);
+    sortByDate()
+    // return storageService.store(KEY, emails);
   });
 }
 
@@ -88,13 +95,15 @@ function generateEmails() {
   for (let i = 0; i < 30; i++) {
     emails.push(createEmail());
   }
-  emails = emails.sort(dateSort)
+  emails = emails.sort(dateSort);
   return emails;
 }
 
-function sortByDate(){
-  return storageService.load(KEY)
-  .then(emails=> emails.sort(dateSort))
+function sortByDate() {
+  return storageService.load(KEY).then(emails => {
+    emails.sort(dateSort);
+    storageService.store(KEY, emails);
+  });
 }
 
 function createEmail() {

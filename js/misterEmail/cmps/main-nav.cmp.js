@@ -1,8 +1,10 @@
+import { emailService } from "../services/email.service.js";
+
 export default {
-  props: ["emails"],
+  // props: ["emails"],
   template: `
 
-          <section class="main-nav">
+          <section v-if="emails" class="main-nav">
        
               <div class="nav-items">
               <i class="fas fa-globe-americas"></i>    
@@ -10,9 +12,10 @@ export default {
                  
               </div>
               
-              <div class="nav-items">
+              <div class="nav-items" >
                   <i class="fas fa-envelope"></i>
-                  <span>&emsp;Unread</span>  <span>&emsp;&emsp;{{unRead}}</span> </div>
+                  <span>&emsp;unread</span>  <span>&emsp;&emsp;{{unread.length}} </span>
+              </div>
               
               
               <div class="nav-items">
@@ -21,23 +24,46 @@ export default {
                 
               </div>
               
-              <div><i class="fas fa-star"></i>&emsp;Important</div>
+              <div class="nav-items"><i class="fas fa-star"></i>&emsp;Important</div>
           </section>
         `,
-  method: {},
-  computed: {
 
-    unRead() {
-      var unRead = 0;
-      this.emails.forEach(email => {
-        if (!email.isRead) unRead++;
+  data() {
+    return {
+      emails: null,
+      unread: null
+    };
+  },
+  methods: {
+    unreadEmails() {
+      emailService.query().then(emails => {
+        this.unread = emails.filter(email => {
+          return email.isRead === false;
+        });
       });
-      return unRead;
-    },
+    }
+    // onUnread() {
+    //   console.log(this.emails);
+
+    //   var unreadList = this.emails.filter(email => {
+    //     console.log(email);
+
+    //     return email.isRead === false;
+    //   });
+
+    //   this.unread = unreadList.length;
+    //   console.log(unreadList);
+    //   return this.unreadList;
+    // }
+  },
+  computed: {
     totalEmails() {
       return this.emails.length;
     }
   },
   created() {
+    emailService.query().then(emails => (this.emails = emails));
+    this.unreadEmails();
+    console.log(this.unread);
   }
 };
