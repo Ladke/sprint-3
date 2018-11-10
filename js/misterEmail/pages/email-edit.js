@@ -40,6 +40,7 @@ export default {
       if (!emailId) return;
       return emailService.getEmailById(emailId).then(email => {
         
+        this.email.id = email.id;
         this.email.emailTo = email.emailFrom;
         this.email.name = 'User Name'
         this.email.emailFrom = email.emailTo;
