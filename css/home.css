@@ -7,8 +7,9 @@
   }
 
   .icon-home {
-    width: 50px;
-    height: 50px;
+    color: rgb(44, 44, 44);
+    width: 100px;
+    height: 100px;
     position: fixed;
     top: 50%;
   }
@@ -19,13 +20,15 @@
     left: 55%;
   }
   .icon_mail-home:hover {
-    fill: rgb(240, 5, 5);
+    fill: rgb(248, 19, 19);
   }
   .icon_note-home:hover {
-    fill: rgb(146, 240, 5);
+    fill: rgb(157, 243, 28);
   }
   .home-header{
       z-index: 1;
+      background-color: rgba(221, 221, 221, 0.411);
+      border-radius: 25px;
       background-image: linear-gradient(to right, rgb(127, 147, 200), rgb(107, 107, 184));
       display: inline-block;
       -webkit-background-clip: text;
